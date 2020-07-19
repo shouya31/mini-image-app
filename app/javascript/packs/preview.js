@@ -7,13 +7,13 @@ document.addEventListener('DOMContentLoaded', function (){
     document.getElementById('click-upload').setAttribute('for', inputId);
   };
 
-  const changeInput = () => {
-    document.getElementById('message_images').addEventListener('change', function(e){
+  const changeInput = (inputArrayLast) => {
+    inputArrayLast.addEventListener('change', function(e){
       const file = e.target.files[0];
       const blob = window.URL.createObjectURL(file);
-      const inputAll = document.getElementsByName('message[images][]');
       const blobHTML = `<img src="${blob}">`;
-      const inputHTML = `<input type='file' name='message[images][]' id="message_images">`;
+      const i = e.target.getAttribute('data-index').to_i +1;
+      const inputHTML = `<input type='file' name='message[images][]' id="message_images_${i}" data-index="${i}">`;
       document.getElementById('new_message').insertAdjacentHTML('beforebegin', blobHTML);
       document.getElementById('new_message').insertAdjacentHTML('beforeend', inputHTML);
     });
