@@ -1,5 +1,8 @@
+<label for='' id='click-upload'>
+  ここをクリックして画像をアップロード
+</label>
 <%= form_with model: @message, id: 'new_message', local: true do |f| %>
   <%= f.text_field :content, placeholder: 'type a message' %>
-  <%= f.file_field :image %>
+  <%= f.file_field :images, name: 'message[images][]', data:{index: 0} %>
   <%= f.submit '送信' %>
 <% end%>
